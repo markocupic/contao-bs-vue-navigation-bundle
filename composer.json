@@ -10,7 +10,8 @@
     }
   ],
   "require": {
-    "contao/core-bundle": ">=4.4"
+    "contao/core-bundle": ">=4.4",
+    "markocupic/contao-component-bootstrap": "^4.3"
   },
   "autoload": {
     "psr-4": {
