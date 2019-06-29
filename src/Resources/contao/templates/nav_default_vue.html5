@@ -1,0 +1,19 @@
+<?php foreach ($this->items as $item): ?>
+{
+    'isActive': '<?= $item["isActive"] ?>',
+    'isExpanded': false,
+    'class': '<?= $item["class"] ?>',
+    'id': <?= $item["id"] ?>,
+    'alias': 'pageAlias_<?= $item["alias"] ?>',
+    'subitems': <?php if($item["subitems"] != ''): ?>[<?= $item["subitems"] ?>]<?php else: ?>false<?php endif; ?>,
+    'link': '<?= $item["link"] ?>',
+    'href': '<?= $item["isActive"] || $item["subitems"] != '' ? "#" : $item["href"] ?>',
+    'pageTitle': '<?= $item["pageTitle"] ?>',
+    'accesskey': '<?= $item["accesskey"] ?>',
+    'tabindex': '<?= $item["tabindex"] ?>',
+    'target': '<?= $item["target"] ?>',
+    'rel': '<?= $item["rel"] ?>',
+},
+<?php endforeach; ?>
+
+

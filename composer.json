@@ -1,0 +1,23 @@
+{
+  "name": "markocupic/contao-bs-vue-navigation-bundle",
+  "type": "contao-module",
+  "description": "Contao Bootstraop Vue Navigation Bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marko Cupic",
+      "homepage": "https://github.com/markocupic/contao-bs-vue-navigation-bundle"
+    }
+  ],
+  "require": {
+    "contao/core-bundle": ">=4.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Markocupic\\ContaoBsVueNavigationBundle\\": "src/"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "Markocupic\\ContaoBsVueNavigationBundle\\ContaoManager\\Plugin"
+  }
+}

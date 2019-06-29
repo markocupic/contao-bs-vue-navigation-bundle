@@ -1,0 +1,41 @@
+<?php $GLOBALS['TL_JAVASCRIPT'][] = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'; ?>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="vueNav_<?= $this->id ?>" v-cloak>
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown_<?= $this->id ?>" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown_<?= $this->id ?>">
+        <ul class="navbar-nav">
+            <li v-for="navL1 in objNav.items" class="nav-item" :class="[navL1.class, navL1.subitems ? 'dropdown' : false]">
+                <a class="nav-link" :href="navL1.href" :title="navL1.pageTitle" :id="navL1.alias" :class="navL1.subitems ? 'dropdown-toggle' : false" :data-toggle="navL1.subitems ? 'dropdown' : false" :role="navL1.subitems ? 'button' : false" :aria-haspopup="navL1.subitems ? 'true' : false" :aria-expanded="navL1.subitems ? 'false' : false">
+                    {{ navL1.link }}
+                    <span v-if="navL1.isActive" class="sr-only">(current)</span>
+                </a>
+                <div v-if="navL1.subitems" class="dropdown-menu" :aria-labelledby="navL1.alias">
+                    <a v-for="navL2 in navL1.subitems" class="dropdown-item" :href="navL2.href">{{ navL2.link }}</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    new Vue({
+        el: '#vueNav_<?= $this->id ?>',
+        data: {
+            objNav:{
+                'class': '<?= $this->class ?>',
+                'cssId': '<?= $this->cssID ?>',
+                'style': '<?= $this->style ?>',
+                'hl': '<?= $this->hl ?>',
+                'headline': '<?= $this->headline ?>',
+                'request': '<?= $this->request ?>',
+                'skipId': '<?= $this->skipId ?>',
+                'items': [<?= $this->items ?>]
+            }
+        }
+    })
+</script>
+
