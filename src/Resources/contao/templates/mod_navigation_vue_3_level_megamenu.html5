@@ -1,5 +1,5 @@
 <?php $GLOBALS['TL_JAVASCRIPT'][] = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'; ?>
-<?php $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaobsvuenavigation/vue/megamenu.js'; ?>
+<?php $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/markocupiccontaobsvuenavigation/vue/megamenu.js'; ?>
 
 <section class="vue-megamenu-navbar position-relative d-flex align-items-center">
     <img {{image::files/assets/logo-red.png?width=80&class=ml-3 mr-3}}
