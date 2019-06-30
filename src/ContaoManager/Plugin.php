@@ -4,7 +4,7 @@
  * @author     Marko Cupic
  * @package    Contao Bs Vue Navigation Bundle
  * @license    LGPL-3.0+
- * @see	       https://github.com/markocupic/contao-article-class-select-bundle
+ * @see	       https://github.com/markocupic/contao-bs-vue-navigation-bundle
  *
  */
 
