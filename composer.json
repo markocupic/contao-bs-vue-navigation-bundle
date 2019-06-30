@@ -2,6 +2,12 @@
   "name": "markocupic/contao-bs-vue-navigation-bundle",
   "type": "contao-module",
   "description": "Contao Bootstraop Vue Navigation Bundle",
+  "keywords": [
+    "contao",
+    "navigation",
+    "vue.js",
+    "templates"
+  ],
   "license": "MIT",
   "authors": [
     {
