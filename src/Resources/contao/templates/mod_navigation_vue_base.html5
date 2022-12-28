@@ -1,8 +1,7 @@
 <?php $GLOBALS['TL_JAVASCRIPT'][] = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'; ?>
 
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="vueNav_<?= $this->id ?>" v-cloak>
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">{{image::files/theme-rsz2020/logos/logos_rsz_new/Kader/kletter_kader_2fbg.svg?width=200}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown_<?= $this->id ?>" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

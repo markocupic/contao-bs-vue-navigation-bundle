@@ -7,7 +7,7 @@ class ContaoVueMegamenu {
             },
             created: function created() {
                 var self = this;
-                window.addEventListener('click', function (e) {
+                document.addEventListener('click', function (e) {
                     if (!e.target.parentNode.classList.contains('dropdown-toggle')) {
                         self.closeAll();
                     }
