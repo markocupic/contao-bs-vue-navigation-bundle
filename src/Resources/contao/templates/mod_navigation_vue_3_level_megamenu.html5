@@ -1,4 +1,4 @@
-<?php $GLOBALS['TL_JAVASCRIPT'][] = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'; ?>
+<?php $GLOBALS['TL_JAVASCRIPT'][] = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.min.js'; ?>
 <?php $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/markocupiccontaobsvuenavigation/vue/megamenu.js'; ?>
 
 <section class="vue-megamenu-navbar position-relative d-flex align-items-center">
@@ -6,7 +6,7 @@
     <nav id="vueNav_<?= $this->id ?>" class="vue-megamenu pl-3 pr-3" v-cloak>
     <ul class="level_1 d-flex flex-row">
             <li v-for="(navL1) in objNav.items" class="nav-item p-0 mr-3" :class="[navL1.class, navL1.isExpanded ? 'show' : false, navL1.subitems ? 'has-dropdown' : false]">
-                <a v-on:click.stop.prevent="toggleDropdown(navL1, $event)" class="nav-link" :href="navL1.href" :title="navL1.pageTitle" :id="navL1.alias" :class="[navL1.subitems ? 'not-clickable' : false, navL1.subitems ? 'dropdown-toggle' : false]" :data-toggle="navL1.subitems ? 'dropdown' : false" :role="navL1.subitems ? 'button' : false" :aria-haspopup="navL1.subitems ? 'true' : false" :aria-expanded="getAriaExpandedProp(navL1)">
+                <a v-on:click.stop.prevent="toggleDropdown(navL1, $event)" class="nav-link" :href="navL1.href" :title="navL1.pageTitle" :id="navL1.alias" :class="[navL1.subitems ? 'not-clickable' : false, navL1.subitems ? 'dropdown-toggle' : false]" :data-bs-toggle="navL1.subitems ? 'dropdown' : false" :role="navL1.subitems ? 'button' : false" :aria-haspopup="navL1.subitems ? 'true' : false" :aria-expanded="getAriaExpandedProp(navL1)">
                     {{ navL1.link }}
                     <span v-if="navL1.isActive" class="sr-only">(current)</span>
                 </a>
