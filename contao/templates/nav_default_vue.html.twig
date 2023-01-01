@@ -1,0 +1,19 @@
+{%- if items is defined and items is not empty -%}
+    {%- for item in items -%}
+                    {
+                        'isActive': {% if item.isActive is defined and item.isActive == true %}true{% else %}false{% endif %},
+                        'isExpanded': false,
+                        'class': '{% if item.class is defined %}{{ item.class }}{% endif %}',
+                        'id': {{ item.id }},
+                        'alias': 'pageAlias_{{ item.alias }}',
+                        'subitems': {% if item.subitems is defined and item.subitems is not empty -%}[{{ item.subitems|raw }}]{%- else -%}false{%- endif -%},
+                        'link': '{% if item.link is defined %}{{ item.link }}{% endif %}',
+                        'href': '{% if item.isActive or item.subitems is not empty %}#{% else %}{{ item.href }}{% endif %}',
+                        'pageTitle': '{% if item.pageTitle is defined %}{{ item.pageTitle }}{% endif %}',
+                        'accesskey': '{% if item.accesskey is defined %}{{ item.accesskey }}{% endif %}',
+                        'tabindex': '{% if item.tabindex is defined %}{{ item.tabindex }}{% endif %}',
+                        'target': '{% if item.target is defined %}{{ item.target|raw }}{% endif %}',
+                        'rel': '{% if item.rel is defined %}{{ item.rel|raw }}{% endif %}',
+                    },
+    {%- endfor -%}
+{%- endif -%}

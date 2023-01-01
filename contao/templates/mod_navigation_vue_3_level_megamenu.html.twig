@@ -1,22 +1,22 @@
-<?php $GLOBALS['TL_JAVASCRIPT'][] = 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.min.js'; ?>
-<?php $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/markocupiccontaobsvuenavigation/vue/megamenu.js'; ?>
+{% do addJavascriptResource('https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js') %}
+{% do addJavascriptResource('bundles/markocupiccontaobsvuenavigation/vue/megamenu.js') %}
 
 <section class="vue-megamenu-navbar position-relative d-flex align-items-center">
-    <img {{image::files/assets/logo-red.png?width=80&class=ml-3 mr-3}}
-    <nav id="vueNav_<?= $this->id ?>" class="vue-megamenu pl-3 pr-3" v-cloak>
-    <ul class="level_1 d-flex flex-row">
-            <li v-for="(navL1) in objNav.items" class="nav-item p-0 mr-3" :class="[navL1.class, navL1.isExpanded ? 'show' : false, navL1.subitems ? 'has-dropdown' : false]">
+    Navbar
+    <nav id="vueNav_{{ id }}" class="vue-megamenu ps-3 pe-3" v-cloak>
+        <ul class="level_1 d-flex flex-row">
+            <li v-for="(navL1) in objNav.items" class="nav-item p-0 me-3" :class="[navL1.class, navL1.isExpanded ? 'show' : false, navL1.subitems ? 'has-dropdown' : false]">
                 <a v-on:click.stop.prevent="toggleDropdown(navL1, $event)" class="nav-link" :href="navL1.href" :title="navL1.pageTitle" :id="navL1.alias" :class="[navL1.subitems ? 'not-clickable' : false, navL1.subitems ? 'dropdown-toggle' : false]" :data-bs-toggle="navL1.subitems ? 'dropdown' : false" :role="navL1.subitems ? 'button' : false" :aria-haspopup="navL1.subitems ? 'true' : false" :aria-expanded="getAriaExpandedProp(navL1)">
-                    {{ navL1.link }}
+                    [[ navL1.link ]]
                     <span v-if="navL1.isActive" class="sr-only">(current)</span>
                 </a>
                 <div v-if="navL1.subitems" class="dropdown-submenu position-absolute p-3" :class="!navL1.isExpanded ? 'd-none' : 'show'" :aria-labelledby="navL1.alias">
                     <div class="container">
                         <!-- Start level 2 -->
                         <ul class="level_2 d-lg-flex p-0">
-                            <li v-for="navL2 in navL1.subitems" class="mr-3" :class="[navL2.class]">
+                            <li v-for="navL2 in navL1.subitems" class="me-3" :class="[navL2.class]">
                                 <a class="dropdown-item p-0" :class="[navL2.subitems ? 'not-clickable' : false]" v-on:click="clickCheck(navL2, $event)" :href="navL2.href">
-                                    {{ navL2.link }}
+                                    [[ navL2.link ]]
                                     <span v-if="navL2.isActive" class="sr-only">(current)</span>
                                 </a>
                                 <div v-if="navL2.subitems" class="submenu" :aria-labelledby="navL2.alias">
@@ -24,7 +24,7 @@
                                     <ul class="level_3 p-0">
                                         <li v-for="navL3 in navL2.subitems" :class="[navL3.class]">
                                             <a class="submenu-item" :href="navL3.href">
-                                                {{ navL3.link }}
+                                                [[ navL3.link ]]
                                                 <span v-if="navL3.isActive" class="sr-only">(current)</span>
                                             </a>
                                         </li>
@@ -40,19 +40,23 @@
         </ul>
     </nav>
 </section>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function(){
-        new ContaoVueMegamenu('#vueNav_<?= $this->id ?>', {
-            'class': '<?= $this->class ?>',
-            'cssId': '<?= $this->cssID ?>',
-            'style': '<?= $this->style ?>',
-            'hl': '<?= $this->hl ?>',
-            'headline': '<?= $this->headline ?>',
-            'request': '<?= $this->request ?>',
-            'skipId': '<?= $this->skipId ?>',
-            'items': [<?= $this->items ?>]
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+        new ContaoVueMegamenu('#vueNav_{{ id }}', {
+            'class': '{{ class }}',
+            'cssId': '{% if cssId is defined %}{{ cssId }}{% endif %}',
+            'style': '{% if style is defined %}{{ style|raw }}{% endif %}',
+            'hl': '{% if hl is defined %}{{ hl|raw }}{% endif %}',
+            'headline': '{% if headline is defined %}{{ headline|raw }}{% endif %}',
+            'request': '{% if request is defined %}{{ request|raw }}{% endif %}',
+            'skipId': '{% if skipId is defined %}{{ skipId }}{% endif %}',
+            'items': [
+                {%- if items is defined -%}
+                {{- items|raw -}}
+                {%- endif -%}
+            ],
+        })
     }, false);
 
 </script>
-

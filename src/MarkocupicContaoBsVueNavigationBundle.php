@@ -12,11 +12,10 @@ namespace Markocupic\ContaoBsVueNavigationBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-/**
- * Configures the contao bs vue navigation bundle.
- *
- * @author Marko Cupic <https://github.com/markocupic>
- */
 class MarkocupicContaoBsVueNavigationBundle extends Bundle
 {
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
 }

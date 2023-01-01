@@ -1,0 +1,55 @@
+{% do addJavascriptResource('https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.prod.min.js') %}
+
+<nav class="navbar navbar-expand-lg" id="vueNav_{{ id }}" v-cloak>
+    <div class="container-lg">
+        <div class="me-4">
+            <a class="navbar-brand" href="#">Navbar</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown_{{ id }}" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown_{{ id }}">
+            <ul class="navbar-nav">
+                <li v-for="navL1 in objNav.items" class="nav-item" :class="[navL1.class, navL1.subitems ? 'dropdown' : false]">
+                    <a class="nav-link" :href="navL1.href" :title="navL1.pageTitle" :id="navL1.alias" :class="navL1.subitems ? 'dropdown-toggle' : false" :data-bs-toggle="navL1.subitems ? 'dropdown' : false" :role="navL1.subitems ? 'button' : false" :aria-haspopup="navL1.subitems ? 'true' : false" :aria-expanded="navL1.subitems ? 'false' : false">
+                        [[ navL1.link ]]
+                        <span v-if="navL1.isActive" class="sr-only">(current)</span>
+                    </a>
+                    <div v-if="navL1.subitems" class="dropdown-menu" :aria-labelledby="navL1.alias">
+                        <a v-for="navL2 in navL1.subitems" class="dropdown-item" :href="navL2.href">[[ navL2.link ]]</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const {createApp} = Vue
+
+        let app = createApp({
+            data() {
+                return {
+                    objNav: {
+                        'class': '{{ class }}',
+                        'cssId': '{% if cssId is defined %}{{ cssId }}{% endif %}',
+                        'style': '{% if style is defined %}{{ style|raw }}{% endif %}',
+                        'hl': '{% if hl is defined %}{{ hl|raw }}{% endif %}',
+                        'headline': '{% if headline is defined %}{{ headline|raw }}{% endif %}',
+                        'request': '{% if request is defined %}{{ request|raw }}{% endif %}',
+                        'skipId': '{% if skipId is defined %}{{ skipId }}{% endif %}',
+                        'items': [
+                            {%- if items is defined -%}
+                            {{- items|raw -}}
+                            {%- endif -%}
+                        ],
+                    }
+                }
+            }
+        });
+
+        app.config.compilerOptions.delimiters = ['[[', ']]'];
+        app.mount('#vueNav_{{ id }}');
+    }, false);
+</script>

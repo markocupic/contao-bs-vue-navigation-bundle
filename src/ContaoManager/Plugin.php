@@ -1,24 +1,25 @@
 <?php
-/**
- * @copyright  Marko Cupic 2019 <m.cupic@gmx.ch>
- * @author     Marko Cupic
- * @package    Contao Bs Vue Navigation Bundle
- * @license    LGPL-3.0+
- * @see	       https://github.com/markocupic/contao-bs-vue-navigation-bundle
+
+declare(strict_types=1);
+
+/*
+ * This file is part of Contao Bootstrap Vue Navigation Bundle.
  *
+ * (c) Marko Cupic 2023 <m.cupic@gmx.ch>
+ * MIT
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
+ * @link https://github.com/markocupic/contao-bs-vue-navigation-bundle
  */
 
 namespace Markocupic\ContaoBsVueNavigationBundle\ContaoManager;
 
-use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
+use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Markocupic\ContaoBsVueNavigationBundle\MarkocupicContaoBsVueNavigationBundle;
 
-/**
- * Plugin for the Contao Manager.
- *
- * @author Marko Cupic
- */
 class Plugin implements BundlePluginInterface
 {
     /**
@@ -27,10 +28,10 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create('Markocupic\ContaoBsVueNavigationBundle\MarkocupicContaoBsVueNavigationBundle')
+            BundleConfig::create(MarkocupicContaoBsVueNavigationBundle::class)
                 ->setLoadAfter([
-                  'Contao\CoreBundle\ContaoCoreBundle',
-                ])
+                    ContaoCoreBundle::class,
+                ]),
         ];
     }
 }
